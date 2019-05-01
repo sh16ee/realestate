@@ -5,6 +5,8 @@ from django.conf import settings
 from rest_framework.urlpatterns import format_suffix_patterns
 from estate import views
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('estate.urls')),
@@ -12,6 +14,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('posts/', views.PostList.as_view()),
     path('posts/<int:pk>/', views.PostDetail.as_view()),
+    path('posts/apilogin/', views.apilogin),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = format_suffix_patterns(urlpatterns)

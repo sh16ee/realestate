@@ -21,3 +21,13 @@ class Post(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     role = models.CharField(max_length=20)
+
+class Agency(models.Model):
+    agency_name = models.CharField(max_length=200)
+    author_posts = models.ManyToManyField(Post)
+
+    class Meta:
+        ordering = ('agency_name',)
+
+    def __str__(self):
+        return self.agency_name

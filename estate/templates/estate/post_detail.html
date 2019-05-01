@@ -7,6 +7,9 @@
         <br>
         <br>
       {% endif %}
+      <div class="date">
+          <p>published: {{ post.published_date }}</p>
+      </div>
         <img src='{{ post.image.url }}' class='img' height="350" width="600" />
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>

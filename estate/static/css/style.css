@@ -1,0 +1,11 @@
+h1 a, h2 a {
+    color: #2c872b;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.page-header{
+  background-color: black;
+}
+.thumbnail{
+  background-color: black;
+}

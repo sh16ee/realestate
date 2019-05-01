@@ -1,0 +1,14 @@
+{% extends 'estate/base.html' %}
+
+{% block content %}
+    <div class="post">
+      {% if user.is_authenticated and user.profile.role == "seller" %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <br>
+        <br>
+      {% endif %}
+        <img src='{{ post.image.url }}' class='img' height="350" width="600" />
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}

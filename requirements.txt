@@ -3,3 +3,4 @@ djangorestframework==3.9.3
 Pillow==6.0.0
 pytz==2019.1
 sqlparse==0.3.0
+votes==1.0.1

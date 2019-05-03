@@ -1,0 +1,7 @@
+.box{
+  background-color: green;
+  grid-template-columns: 20%;
+}
+body{
+  background-color: black;
+}

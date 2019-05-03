@@ -5,32 +5,38 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/stil.css' %}">
+        <link rel="stylesheet" href="{% static 'css/estate.css' %}">
     </head>
     <body>
         <div class="page-header">
             <h1><a href="/">REAL ESTATE</a></h1>
+
             {% if user.is_authenticated %}
+              <a href="{% url 'logout' %}" class="logout"><button type='submit'>Выйти</button></a>
+
+
               {% if user.profile.role == "seller"  %}
-              <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+              <a href="{% url 'post_new' %}" class="top-menu"><span>Подать объявление</span></a>
               {% endif %}
-              <br>
-              <a href="{% url 'logout' %}"><button type='submit'>Log out</button></a>
+              &nbsp
+              &nbsp
+              &nbsp
+              <a href="{% url 'agency_list' %}" class="top-menu"><span>Агенства</span></a>
+
+
 
             {% endif %}
             {% if not user.is_authenticated %}
 
-              <a href="{% url 'login' %}"><button type='submit'>Sign In</button></a>
+              <a href="{% url 'login' %}"><button type='submit'>Войти</button></a>
 
             {% endif %}
+            <br>
         </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
-                </div>
-            </div>
+        <div class="itemlist">
+            {% block content %}
+            {% endblock %}
         </div>
+
     </body>
 </html>

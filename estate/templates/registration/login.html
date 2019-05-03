@@ -2,15 +2,17 @@
 
 
 {% block content %}
-<h2>Login</h2>
+<div class="login">
+<h2>Вход</h2>
 <br>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <br>
-  <button type="submit">Login</button>
+  <button type="submit">Войти</button>
   <br>
   <br>
-  <p><a href="{% url 'signup' %}">Signup</a></p>
+  <p><a href="{% url 'signup' %}">Регистрация</a></p>
 </form>
+</div>
 {% endblock %}

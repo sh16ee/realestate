@@ -1,18 +1,24 @@
 {% extends 'estate/base.html' %}
+
 {% block content %}
+<div class="post_edit">
+<h1>Объявления от агентсва {{ agency.name }}</h1>
+<br>
 <div class="container-fluid">
-  {% for post in posts %}
+  {% for post in agency.posts.all %}
             <div  class="row">
             <div class="col-lg-2">
             <a href="{% url 'post_detail' pk=post.pk %}">
             <div class="thumbnail" id="set_thumbnail">
             <img src='{{ post.image.url }}' class='img' height="200px" width="300px" />
             <h1>{{ post.title }}</h1>
+            <p>{{ post.text|linebreaksbr }}</p>
             <a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.comments.count }}</a>
           </div>
           </a>
             </div>
   {% endfor %}
+</div>
 </div>
 </div>
 {% endblock %}

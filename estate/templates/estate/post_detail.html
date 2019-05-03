@@ -1,6 +1,7 @@
 {% extends 'estate/base.html' %}
 
 {% block content %}
+    <div class="thumbnail" id="post_thumbnail">
     <div class="post">
       {% if user.is_authenticated and user.profile.role == "seller" %}
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -8,10 +9,45 @@
         <br>
       {% endif %}
       <div class="date">
-          <p>published: {{ post.published_date }}</p>
+          <p>Опубликовано: {{ post.published_date }}</p>
       </div>
         <img src='{{ post.image.url }}' class='img' height="350" width="600" />
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
+      </div>
+      <br>
+      <br>
+      <div>
+        <p>Агенства:</p>
+        {% for agency in post.agencies.all %}
+        <h3><a href="{{ agency.get_absolute_url }}">{{ agency.name }}</a></h3>
+        {% endfor %}
+      </div>
+        <div class="comment_style">
+        <br>
+        <br>
+        <hr>
+        <a class="btn btn-default" id="add_comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Написать комментарий</a>
+      {% for comment in post.comments.all %}
+       {% if user.is_authenticated or comment.approved_comment %}
+       <hr>
+        <div class="comment">
+            <div class="date">
+                {{ comment.created_date }}
+                {% if user.profile.role == "seller" %}
+                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                {% endif %}
+            </div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+        <hr>
+       {% endif %}
+       {% empty %}
+          <br>
+          <br>
+          <p>Комментарии отсутствуют</p>
+      {% endfor %}
+        </div>
     </div>
 {% endblock %}

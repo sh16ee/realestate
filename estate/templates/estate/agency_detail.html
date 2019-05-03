@@ -12,7 +12,6 @@
             <div class="thumbnail" id="set_thumbnail">
             <img src='{{ post.image.url }}' class='img' height="200px" width="300px" />
             <h1>{{ post.title }}</h1>
-            <p>{{ post.text|linebreaksbr }}</p>
             <a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.comments.count }}</a>
           </div>
           </a>

@@ -10,7 +10,7 @@ class Post(models.Model):
     text = models.TextField()
     image = models.ImageField(upload_to='images/')
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    published_date = models.DateTimeField(default=timezone.now)
     agencies = models.ManyToManyField('Agency', blank=True, related_name='posts')
 
     def publish(self):

@@ -1,18 +1,18 @@
 {% extends 'estate/base.html' %}
 {% block content %}
 <div class="container-fluid">
-  {% for post in posts %}
-            <div  class="row">
-            <div class="col-lg-2">
-            <a href="{% url 'post_detail' pk=post.pk %}">
-            <div class="thumbnail" id="set_thumbnail">
-            <img src='{{ post.image.url }}' class='img' height="200px" width="300px" />
-            <h1>{{ post.title }}</h1>
-            <a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.comments.count }}</a>
-          </div>
-          </a>
-            </div>
-  {% endfor %}
-</div>
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-lg-2">
+      <a href="{% url 'post_detail' pk=post.pk %}">
+        <div class="thumbnail" id="set_thumbnail">
+          <img src='{{ post.image.url }}' class="img"/>
+          <h1>{{ post.title }}</h1>
+          <a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.comments.count }}</a>
+        </div>
+      </a>
+     </div>
+{% endfor %}
+    </div>
 </div>
 {% endblock %}

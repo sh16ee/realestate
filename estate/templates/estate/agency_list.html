@@ -3,9 +3,17 @@
 {% block content %}
 <div class="post_edit">
 <h1>Агенства:</h1>
-
+<br>
+<div class="container-fluid">
+<div  class="row">
 {% for agency in agencies %}
+<div class="col-lg-2">
+<div class="thumbnail" id="ag_thumbnail">
 <h3><a href="{{ agency.get_absolute_url }}">{{ agency.name }}</a></h3>
+</div>
+</div>
 {% endfor %}
+</div>
+</div>
 </div>
 {% endblock %}
